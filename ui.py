@@ -34,3 +34,9 @@ class HUD:
         w = self.crosshair.get_width()
         h = self.crosshair.get_height()
         screen.blit(self.crosshair, (mx - w // 2, my - h // 2))
+
+        def draw_score(self, screen, score):
+        screen.blit(self.score_img, (SCREEN_WIDTH - 220, 0))
+        font = pygame.font.Font(None, 60)
+        text = font.render(str(score), 1, (58, 31, 4))
+        screen.blit(text, (SCREEN_WIDTH - 80, 8))
