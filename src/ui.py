@@ -57,8 +57,8 @@ class HUD:
             screen.fill((128, 128, 128))  
 
     def draw_overlay(self, screen):
+        screen.blit(self.overlay, (0, 0))
         
-
     def show_game_over(self, score):
         pygame.mouse.set_visible(True)
         Tk().withdraw()
