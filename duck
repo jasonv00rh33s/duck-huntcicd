@@ -29,3 +29,7 @@ def spawn(self):
         self._alive = True
         self._escaping = False
         self._frame_count = 0
+
+def update(self):
+        self._x += self._vx
+        self._y += self._vy
