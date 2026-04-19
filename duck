@@ -20,3 +20,12 @@ def __init__(self, surface: pygame.Surface, difficulty: str = "normal"):
         self.base_speed = cfg["duck_step"]
         self.flight_duration = cfg["flight_duration"]
         self.escape_speed = cfg["escape_speed"]
+
+def spawn(self):
+        self._x = random.randint(50, SCREEN_WIDTH - 50 - self.DUCK_WIDTH)
+        self._y = SCREEN_HEIGHT - self.DUCK_HEIGHT
+        self._vx = random.choice([-1, 1]) * random.uniform(0.6, 1.0) * self.base_speed
+        self._vy = -random.uniform(0.8, 1.2) * self.base_speed
+        self._alive = True
+        self._escaping = False
+        self._frame_count = 0
