@@ -63,3 +63,9 @@ def kill(self):
         self._vx = 0
         self._vy = 6  
 
+def is_hit(self, mouse_x: int, mouse_y: int) -> bool:
+        return (
+            self._alive and
+            self._x <= mouse_x <= self._x + self.DUCK_WIDTH and
+            self._y <= mouse_y <= self._y + self.DUCK_HEIGHT
+        )
