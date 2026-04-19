@@ -21,3 +21,10 @@ class HUD:
         w = duck_raw.get_width() // 3
         h = duck_raw.get_height() // 3
         self.duck_surface = pygame.transform.scale(duck_raw, (w, h))
+
+        def _init_crosshair(self):
+        pygame.mouse.set_visible(False)
+        w = self.crosshair.get_width()
+        h = self.crosshair.get_height()
+        if w > 64 or h > 64:
+            self.crosshair = pygame.transform.scale(self.crosshair, (48, 48))
