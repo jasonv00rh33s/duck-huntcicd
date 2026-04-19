@@ -40,3 +40,8 @@ class HUD:
         font = pygame.font.Font(None, 60)
         text = font.render(str(score), 1, (58, 31, 4))
         screen.blit(text, (SCREEN_WIDTH - 80, 8))
+
+        def draw_crosses(self, screen, cross_count):
+        base_x = SCREEN_WIDTH - 165
+        for i in range(min(cross_count, 3)):
+            screen.blit(self.red_cross, (base_x + i * 47, 55))
