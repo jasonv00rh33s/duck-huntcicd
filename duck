@@ -72,3 +72,6 @@ def is_hit(self, mouse_x: int, mouse_y: int) -> bool:
 
 def is_escaped(self) -> bool:
         return self._alive and self._escaping and self._y < -self.DUCK_HEIGHT
+
+def is_fallen(self) -> bool:
+        return not self._alive and self._y > SCREEN_HEIGHT
