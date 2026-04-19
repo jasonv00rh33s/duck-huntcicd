@@ -69,3 +69,6 @@ def is_hit(self, mouse_x: int, mouse_y: int) -> bool:
             self._x <= mouse_x <= self._x + self.DUCK_WIDTH and
             self._y <= mouse_y <= self._y + self.DUCK_HEIGHT
         )
+
+def is_escaped(self) -> bool:
+        return self._alive and self._escaping and self._y < -self.DUCK_HEIGHT
