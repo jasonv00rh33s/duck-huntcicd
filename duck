@@ -5,3 +5,18 @@ from src.config import SCREEN_WIDTH, SCREEN_HEIGHT, DIFFICULTY_SPEED
 class Duck:
     DUCK_WIDTH = 90
     DUCK_HEIGHT = 90
+
+def __init__(self, surface: pygame.Surface, difficulty: str = "normal"):
+        self.surface = surface
+        cfg = DIFFICULTY_SPEED[difficulty]
+        self.base_speed = cfg["duck_step"]
+        self._x = 0
+        self._y = 0
+        self._vx = 0
+        self._vy = 0
+        self._alive = True
+        self._escaping = False
+        self._frame_count = 0
+        self.base_speed = cfg["duck_step"]
+        self.flight_duration = cfg["flight_duration"]
+        self.escape_speed = cfg["escape_speed"]
