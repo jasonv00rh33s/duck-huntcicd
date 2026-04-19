@@ -1,3 +1,7 @@
 import random
 import pygame
 from src.config import SCREEN_WIDTH, SCREEN_HEIGHT, DIFFICULTY_SPEED
+
+class Duck:
+    DUCK_WIDTH = 90
+    DUCK_HEIGHT = 90
