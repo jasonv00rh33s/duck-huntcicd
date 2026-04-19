@@ -6,7 +6,7 @@ class Duck:
     DUCK_WIDTH = 90
     DUCK_HEIGHT = 90
 
-def __init__(self, surface: pygame.Surface, difficulty: str = "normal"):
+    def __init__(self, surface: pygame.Surface, difficulty: str = "normal"):
         self.surface = surface
         cfg = DIFFICULTY_SPEED[difficulty]
         self.base_speed = cfg["duck_step"]
@@ -21,7 +21,7 @@ def __init__(self, surface: pygame.Surface, difficulty: str = "normal"):
         self.flight_duration = cfg["flight_duration"]
         self.escape_speed = cfg["escape_speed"]
 
-def spawn(self):
+    def spawn(self):
         self._x = random.randint(50, SCREEN_WIDTH - 50 - self.DUCK_WIDTH)
         self._y = SCREEN_HEIGHT - self.DUCK_HEIGHT
         self._vx = random.choice([-1, 1]) * random.uniform(0.6, 1.0) * self.base_speed
@@ -30,11 +30,11 @@ def spawn(self):
         self._escaping = False
         self._frame_count = 0
 
-def update(self):
+    def update(self):
         self._x += self._vx
         self._y += self._vy
 
-if not self._alive:
+        if not self._alive:
             return
 
         self._frame_count += 1
@@ -58,24 +58,24 @@ if not self._alive:
                 self._y = SCREEN_HEIGHT - self.DUCK_HEIGHT - 100
                 self._vy = -abs(self._vy)
 
-def kill(self):
+    def kill(self):
         self._alive = False
         self._vx = 0
         self._vy = 6  
 
-def is_hit(self, mouse_x: int, mouse_y: int) -> bool:
+    def is_hit(self, mouse_x: int, mouse_y: int) -> bool:
         return (
             self._alive and
             self._x <= mouse_x <= self._x + self.DUCK_WIDTH and
             self._y <= mouse_y <= self._y + self.DUCK_HEIGHT
         )
 
-def is_escaped(self) -> bool:
+    def is_escaped(self) -> bool:
         return self._alive and self._escaping and self._y < -self.DUCK_HEIGHT
 
-def is_fallen(self) -> bool:
+    def is_fallen(self) -> bool:
         return not self._alive and self._y > SCREEN_HEIGHT
-
-@property
+    
+    @property
     def position(self):
         return int(self._x), int(self._y)
