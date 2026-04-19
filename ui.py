@@ -28,3 +28,9 @@ class HUD:
         h = self.crosshair.get_height()
         if w > 64 or h > 64:
             self.crosshair = pygame.transform.scale(self.crosshair, (48, 48))
+
+        def draw_crosshair(self, screen: pygame.Surface):
+        mx, my = pygame.mouse.get_pos()
+        w = self.crosshair.get_width()
+        h = self.crosshair.get_height()
+        screen.blit(self.crosshair, (mx - w // 2, my - h // 2))
