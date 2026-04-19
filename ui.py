@@ -46,7 +46,6 @@ class HUD:
         for i in range(min(cross_count, 3)):
             screen.blit(self.red_cross, (base_x + i * 47, 55))
 
-        
         def draw_background(self, screen):
         if self.bg_color == "image":
             screen.blit(self.background, (0, 0))
@@ -56,3 +55,6 @@ class HUD:
             screen.fill((0, 0, 0))        
         elif self.bg_color == "gray":
             screen.fill((128, 128, 128))  
+
+        def draw_overlay(self, screen):
+        screen.blit(self.overlay, (0, 0))
