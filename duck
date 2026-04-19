@@ -57,3 +57,9 @@ if not self._alive:
             elif self._y >= SCREEN_HEIGHT - self.DUCK_HEIGHT - 100:
                 self._y = SCREEN_HEIGHT - self.DUCK_HEIGHT - 100
                 self._vy = -abs(self._vy)
+
+def kill(self):
+        self._alive = False
+        self._vx = 0
+        self._vy = 6  
+
