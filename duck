@@ -33,3 +33,27 @@ def spawn(self):
 def update(self):
         self._x += self._vx
         self._y += self._vy
+
+if not self._alive:
+            return
+
+        self._frame_count += 1
+
+        if self._frame_count >= self.flight_duration and not self._escaping:
+            self._escaping = True
+            self._vx = 0
+            self._vy = -self.base_speed * self.escape_speed
+        if not self._escaping:
+            if self._x <= 0:
+                self._x = 0
+                self._vx = abs(self._vx)
+            elif self._x >= SCREEN_WIDTH - self.DUCK_WIDTH:
+                self._x = SCREEN_WIDTH - self.DUCK_WIDTH
+                self._vx = -abs(self._vx)
+
+            if self._y <= 80:
+                self._y = 80
+                self._vy = abs(self._vy)
+            elif self._y >= SCREEN_HEIGHT - self.DUCK_HEIGHT - 100:
+                self._y = SCREEN_HEIGHT - self.DUCK_HEIGHT - 100
+                self._vy = -abs(self._vy)
