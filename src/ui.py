@@ -10,7 +10,7 @@ class HUD:
         self._load_assets()   
         self._init_crosshair() 
 
-        def _load_assets(self):
+    def _load_assets(self):
         e = self.engine
         self.background = e.load_image("assets/background.png")
         self.overlay = e.load_image("assets/overlay.png")
@@ -22,31 +22,31 @@ class HUD:
         h = duck_raw.get_height() // 3
         self.duck_surface = pygame.transform.scale(duck_raw, (w, h))
 
-        def _init_crosshair(self):
+    def _init_crosshair(self):
         pygame.mouse.set_visible(False)
         w = self.crosshair.get_width()
         h = self.crosshair.get_height()
         if w > 64 or h > 64:
             self.crosshair = pygame.transform.scale(self.crosshair, (48, 48))
 
-        def draw_crosshair(self, screen: pygame.Surface):
+    def draw_crosshair(self, screen: pygame.Surface):
         mx, my = pygame.mouse.get_pos()
         w = self.crosshair.get_width()
         h = self.crosshair.get_height()
         screen.blit(self.crosshair, (mx - w // 2, my - h // 2))
 
-        def draw_score(self, screen, score):
+    def draw_score(self, screen, score):
         screen.blit(self.score_img, (SCREEN_WIDTH - 220, 0))
         font = pygame.font.Font(None, 60)
         text = font.render(str(score), 1, (58, 31, 4))
         screen.blit(text, (SCREEN_WIDTH - 80, 8))
 
-        def draw_crosses(self, screen, cross_count):
+    def draw_crosses(self, screen, cross_count):
         base_x = SCREEN_WIDTH - 165
         for i in range(min(cross_count, 3)):
             screen.blit(self.red_cross, (base_x + i * 47, 55))
 
-        def draw_background(self, screen):
+    def draw_background(self, screen):
         if self.bg_color == "image":
             screen.blit(self.background, (0, 0))
         elif self.bg_color == "blue":
@@ -56,17 +56,17 @@ class HUD:
         elif self.bg_color == "gray":
             screen.fill((128, 128, 128))  
 
-        def draw_overlay(self, screen):
+    def draw_overlay(self, screen):
         screen.blit(self.overlay, (0, 0))
 
-        def show_game_over(self, score):
+    def show_game_over(self, score):
         pygame.mouse.set_visible(True)
         Tk().withdraw()
         messagebox.showinfo("Game Over", f"Game over!\nScore: {score}")
         pygame.quit()
         sys.exit()
 
-        def draw_frame(self, screen, duck_surface, duck_pos, score, crosses):
+    def draw_frame(self, screen, duck_surface, duck_pos, score, crosses):
         self.draw_background(screen)
         screen.blit(duck_surface, duck_pos)
         self.draw_overlay(screen)
