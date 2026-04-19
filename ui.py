@@ -65,3 +65,11 @@ class HUD:
         messagebox.showinfo("Game Over", f"Game over!\nScore: {score}")
         pygame.quit()
         sys.exit()
+
+        def draw_frame(self, screen, duck_surface, duck_pos, score, crosses):
+        self.draw_background(screen)
+        screen.blit(duck_surface, duck_pos)
+        self.draw_overlay(screen)
+        self.draw_score(screen, score)
+        self.draw_crosses(screen, crosses)
+        self.draw_crosshair(screen)
