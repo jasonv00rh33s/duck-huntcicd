@@ -75,3 +75,7 @@ def is_escaped(self) -> bool:
 
 def is_fallen(self) -> bool:
         return not self._alive and self._y > SCREEN_HEIGHT
+
+@property
+    def position(self):
+        return int(self._x), int(self._y)
