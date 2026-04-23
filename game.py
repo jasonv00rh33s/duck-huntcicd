@@ -30,7 +30,7 @@ def main():
  
         duck.update()
 
-          if state == "flying" and duck.is_escaped():
+        if state == "flying" and duck.is_escaped():
             crosses += 1
             if crosses >= 3:
                 hud.show_game_over(score)
