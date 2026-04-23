@@ -11,3 +11,9 @@ class GameEngine:
         self.fps = fps
         self.clock = pygame.time.Clock()
         self._running = False
+
+    def load_image(self, path: str, scale=None) -> pygame.Surface:
+        img = pygame.image.load(path).convert_alpha()
+        if scale:
+            img = pygame.transform.scale(img, scale)
+        return img
