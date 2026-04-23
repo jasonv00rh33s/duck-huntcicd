@@ -17,3 +17,11 @@ pip install pygame
 ```
 python game.py
 ```
+
+## Аргументи командного рядка
+```
+python game.py --difficulty easy    # легкий рівень
+python game.py --difficulty normal  # нормальний (за замовчуванням)
+python game.py --difficulty hard    # важкий
+python game.py --fps 30             # змінити FPS
+```
