@@ -22,3 +22,4 @@ class GameEngine:
         pygame.display.update()
 self.clock.tick(self.fps)
 
+ def handle_quit(self, event):
