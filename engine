@@ -23,3 +23,5 @@ class GameEngine:
 self.clock.tick(self.fps)
 
  def handle_quit(self, event):
+        if event.type == pygame.QUIT:
+            self.quit()
