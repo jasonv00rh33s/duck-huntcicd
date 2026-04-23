@@ -30,4 +30,4 @@ pygame.quit()
         sys.exit()
  def run(self, game_loop_fn):
 self._running = True
-
+while self._running:
