@@ -35,3 +35,7 @@ def main():
             if crosses >= 3:
                 hud.show_game_over(score)
             duck.spawn()
+
+        elif state == "falling" and duck.is_fallen():
+            duck.spawn()
+            state = "flying"
