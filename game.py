@@ -39,3 +39,14 @@ def main():
         elif state == "falling" and duck.is_fallen():
             duck.spawn()
             state = "flying"
+
+        hud.draw_frame(
+            engine.screen,
+            hud.duck_surface,
+            duck.position,
+            score,
+            crosses
+        )
+        engine.refresh()
+
+    engine.run(game_loop)
