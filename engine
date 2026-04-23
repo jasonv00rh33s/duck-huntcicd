@@ -1,3 +1,13 @@
 import pygame
 import sys
 from src.config import SCREEN_WIDTH, SCREEN_HEIGHT
+class GameEngine:
+
+    def __init__(self, fps: int = 60):
+        pygame.init()
+        self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.screen.set_alpha(None)
+        pygame.display.set_caption("Duck Hunt")
+        self.fps = fps
+        self.clock = pygame.time.Clock()
+        self._running = False
