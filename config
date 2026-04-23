@@ -1,1 +1,6 @@
 import argparse
+
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+FPS = 60
+DUCK_COORDS = [(350, 390), (450, 390), (550, 390), (650, 390)]
