@@ -1,6 +1,6 @@
 import pygame
 from src.config import parse_args
-from src.engine import GameEngine, handle_quit()
+from src.engine import GameEngine
 from src.duck import Duck
 from src.ui import HUD
 
@@ -19,7 +19,7 @@ def main():
         nonlocal score, crosses, state
 
         for event in pygame.event.get():
-            handle_quit(event)
+            engine.handle_quit(event)
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if state == "flying":
                     mx, my = pygame.mouse.get_pos()
