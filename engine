@@ -26,3 +26,6 @@ self.clock.tick(self.fps)
         if event.type == pygame.QUIT:
             self.quit()
  def quit(self):
+pygame.quit()
+        sys.exit()
+
