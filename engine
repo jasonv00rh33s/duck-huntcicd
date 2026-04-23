@@ -28,4 +28,5 @@ self.clock.tick(self.fps)
  def quit(self):
 pygame.quit()
         sys.exit()
+ def run(self, game_loop_fn):
 
