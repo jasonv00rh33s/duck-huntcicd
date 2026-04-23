@@ -18,19 +18,19 @@ class GameEngine:
             img = pygame.transform.scale(img, scale)
         return img
 
- def refresh(self):
-    pygame.display.update()
-    self.clock.tick(self.fps)
+     def refresh(self):
+        pygame.display.update()
+        self.clock.tick(self.fps)
 
- def handle_quit(self, event):
+     def handle_quit(self, event):
         if event.type == pygame.QUIT:
             self.quit()
 
- def quit(self):
-    pygame.quit()
-    sys.exit()
+     def quit(self):
+        pygame.quit()
+        sys.exit()
 
- def run(self, game_loop_fn):
-  self._running = True
-  while self._running:
-   game_loop_fn()
+     def run(self, game_loop_fn):
+          self._running = True
+          while self._running:
+               game_loop_fn()
