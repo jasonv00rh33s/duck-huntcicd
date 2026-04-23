@@ -17,3 +17,6 @@ class GameEngine:
         if scale:
             img = pygame.transform.scale(img, scale)
         return img
+
+ def refresh(self):
+        pygame.display.update()
