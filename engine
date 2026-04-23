@@ -20,3 +20,5 @@ class GameEngine:
 
  def refresh(self):
         pygame.display.update()
+self.clock.tick(self.fps)
+
