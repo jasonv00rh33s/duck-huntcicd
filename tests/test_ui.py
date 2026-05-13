@@ -21,17 +21,19 @@ class TestHUD:
     # Фікстура для ініціалізації HUD з мокованим двигуном 
     @pytest.fixture
     def hud(self, mock_engine):
-        with patch('pygame.mouse.set_visible'):
+        with patch('pygame.mouse.set_visible'), \
+             patch('pygame.transform.scale') as mock_scale:
+
+            mock_scale.return_value = mock_engine.load_image.return_value
             return HUD(mock_engine)
 
     def test_hud_initialization(self, mock_engine):
-        """Перевірка коректної ініціалізації HUD та завантаження асетів [cite: 10]"""
-        with patch('pygame.mouse.set_visible') as mock_visible:
+        """Перевірка коректної ініціалізації HUD та завантаження асетів"""
+        with patch('pygame.mouse.set_visible') as mock_visible, \
+             patch('pygame.transform.scale'): # Додаємо цей патч тут
             hud = HUD(mock_engine)
             assert hud.bg_color == "image"
-            # Перевірка, чи викликалися методи завантаження зображень
             assert mock_engine.load_image.called
-            # Перевірка, чи було приховано курсор миші
             mock_visible.assert_called_with(False)
     
     # Параметризація для перевірки різних кольорів фону 
