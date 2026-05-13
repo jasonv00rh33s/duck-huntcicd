@@ -42,8 +42,7 @@ class TestHUD:
         ("gray", (128, 128, 128))
     ])
     def test_draw_background_colors(self, mock_engine, color, expected_rgb):
-        """Перевірка заливки фону відповідними кольорами [cite: 10]"""
-        # Додаємо патчі сюди, бо ми створюємо HUD вручну
+        """Перевірка заливки фону відповідними кольорами"""
         with patch('pygame.mouse.set_visible'), \
              patch('pygame.transform.scale'):
             
@@ -70,7 +69,7 @@ class TestHUD:
     @patch('src.ui.sys.exit')
     @patch('src.ui.pygame.quit')
     def test_show_game_over(self, mock_pygame_quit, mock_sys_exit, mock_tk, mock_msg, hud):
-        """Тестування завершення гри та виклику діалогового вікна (Mocking) """
+        """Тестування завершення гри та виклику діалогового вікна """
         hud.show_game_over(50)
         
         # Перевірка відображення вікна з результатом
@@ -82,7 +81,7 @@ class TestHUD:
         mock_sys_exit.assert_called_once()
 
     def test_draw_crosses(self, hud):
-        """Перевірка малювання хрестиків (життів) [cite: 10]"""
+        """Перевірка малювання хрестиків (життів)"""
         screen_mock = MagicMock()
         hud.draw_crosses(screen_mock, 2)
         # Має бути 2 виклики blit для червоних хрестиків
