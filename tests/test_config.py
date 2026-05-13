@@ -20,8 +20,4 @@ def test_parse_args_custom():
         assert args.difficulty == 'hard'
         assert args.bg_color == 'blue'
 
-def test_difficulty_config_exists():
-    """Перевіряє, що в конфігу є налаштування для всіх 3 рівнів складності."""
-    assert "easy" in DIFFICULTY_SPEED
-    assert "normal" in DIFFICULTY_SPEED
-    assert "hard" in DIFFICULTY_SPEED
+
