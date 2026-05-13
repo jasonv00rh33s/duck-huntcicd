@@ -33,3 +33,52 @@ class TestHUD:
             assert mock_engine.load_image.called
             # Перевірка, чи було приховано курсор миші
             mock_visible.assert_called_with(False)
+    
+    # Параметризація для перевірки різних кольорів фону 
+    @pytest.mark.parametrize("color, expected_rgb", [
+        ("blue", (135, 206, 235)),
+        ("black", (0, 0, 0)),
+        ("gray", (128, 128, 128))
+    ])
+    def test_draw_background_colors(self, mock_engine, color, expected_rgb):
+        """Перевірка заливки фону відповідними кольорами [cite: 10]"""
+        hud = HUD(mock_engine, bg_color=color)
+        screen_mock = MagicMock()
+        hud.draw_background(screen_mock)
+        screen_mock.fill.assert_called_with(expected_rgb)
+
+    def test_draw_score(self, hud):
+        """Тестування відображення рахунку з використанням мокування шрифтів """
+        screen_mock = MagicMock()
+        with patch('pygame.font.Font') as mock_font_class:
+            mock_font = MagicMock()
+            mock_font_class.return_value = mock_font
+            
+            hud.draw_score(screen_mock, 150)
+            
+            # Перевірка рендерингу тексту
+            mock_font.render.assert_called()
+            assert "150" in str(mock_font.render.call_args)
+
+    @patch('src.ui.messagebox.showinfo')
+    @patch('src.ui.Tk')
+    @patch('src.ui.sys.exit')
+    @patch('src.ui.pygame.quit')
+    def test_show_game_over(self, mock_pygame_quit, mock_sys_exit, mock_tk, mock_msg, hud):
+        """Тестування завершення гри та виклику діалогового вікна (Mocking) """
+        hud.show_game_over(50)
+        
+        # Перевірка відображення вікна з результатом
+        mock_msg.assert_called_once()
+        assert "50" in mock_msg.call_args[0][1]
+        
+        # Перевірка коректного завершення програм
+        mock_pygame_quit.assert_called_once()
+        mock_sys_exit.assert_called_once()
+
+    def test_draw_crosses(self, hud):
+        """Перевірка малювання хрестиків (життів) [cite: 10]"""
+        screen_mock = MagicMock()
+        hud.draw_crosses(screen_mock, 2)
+        # Має бути 2 виклики blit для червоних хрестиків
+        assert screen_mock.blit.call_count == 2
