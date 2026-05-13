@@ -36,7 +36,6 @@ class TestHUD:
             assert mock_engine.load_image.called
             mock_visible.assert_called_with(False)
     
-    # Параметризація для перевірки різних кольорів фону 
     @pytest.mark.parametrize("color, expected_rgb", [
         ("blue", (135, 206, 235)),
         ("black", (0, 0, 0)),
@@ -44,10 +43,14 @@ class TestHUD:
     ])
     def test_draw_background_colors(self, mock_engine, color, expected_rgb):
         """Перевірка заливки фону відповідними кольорами [cite: 10]"""
-        hud = HUD(mock_engine, bg_color=color)
-        screen_mock = MagicMock()
-        hud.draw_background(screen_mock)
-        screen_mock.fill.assert_called_with(expected_rgb)
+        # Додаємо патчі сюди, бо ми створюємо HUD вручну
+        with patch('pygame.mouse.set_visible'), \
+             patch('pygame.transform.scale'):
+            
+            hud = HUD(mock_engine, bg_color=color)
+            screen_mock = MagicMock()
+            hud.draw_background(screen_mock)
+            screen_mock.fill.assert_called_with(expected_rgb)
 
     def test_draw_score(self, hud):
         """Тестування відображення рахунку з використанням мокування шрифтів """
